@@ -160,8 +160,7 @@ X 可以是 $\min$或 $\max$或 $\sum$， Y 可以是 $\min$或 $\max$。
 
 注意到$\gcd$有以下性质：
 
->$\gcd(a_1, a_2, \cdots, a_n, a_{n+1}) \le \gcd(a_1, a_2, \cdots, a_n)$且如果$\gcd(a_1, a_2, \cdots, a_n, a_{n+1}) \lt \gcd(a_1, a_2, \cdots, a_n)$则有$\gcd(a_1, a_2, \cdots, a_n, a_{n+1}) \le \frac12\gcd(a_1, a_2, \cdots, a_n)$.
-> 
+>$\gcd(a_1, a_2, \cdots, a_n, a_{n+1}) \le \gcd(a_1, a_2, \cdots, a_n)$且如果$\gcd(a_1, a_2, \cdots, a_n, a_{n+1}) > \gcd(a_1, a_2, \cdots, a_n)$则有$\gcd(a_1, a_2, \cdots, a_n, a_{n+1}) \le \frac12\gcd(a_1, a_2, \cdots, a_n)$.
 >> 证明：
 >> 每次$\gcd$变化至少要除以$2$.
 
