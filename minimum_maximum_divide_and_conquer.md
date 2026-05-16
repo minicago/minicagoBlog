@@ -150,7 +150,7 @@ X 可以是 $\min$或 $\max$或 $\sum$， Y 可以是 $\min$或 $\max$。
 
 > 题意简述
 >
-> 给定一个数列$\{ a \}$，求$\sum_{i\le j}(\max_{k=i}^ja_k)(\gcd_{k=i}^ja_k) \bmod 1 \ 000 \ 000 \ 007$.
+> 给定一个数列$\{ a \}$，求$\sum_{i\le j}(\max_{k=i}^ja_k)(\gcd_{k=i}^ja_k) \bmod 1,000,000,007$.
 >
 > 其中$1 \le n \le 2 \times 10^5, 1 \le a_i \le 10^9$.
 
