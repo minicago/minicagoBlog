@@ -20,3 +20,11 @@
 N5wC9Tp0。
 
 OJ上的题目为每次模拟测试的题目，请各位同学即时在上面完成补题。
+
+## Codeforces Group
+
+Codeforces是一个在线编程竞赛平台，提供了各种算法和数据结构的练习题目。我们创建了一个Codeforces小组，供大家交流和分享解题经验。
+
+https://codeforces.com/group/mcJfuVoBhn/
+
+我们会定期组织VP赛，提供一些有趣的题目供大家练习。欢迎大家加入小组，参与讨论和比赛！

@@ -16,19 +16,12 @@ difficulty: medium+
 > LTI 系统——线性时不变系统
 > 一个离散时间系统，如果同时满足以下两个条件，就称为 LTI 系统:
 > 1. 线性性: 对加权和的响应等于各自响应的加权和 
->> 若
-$$
-x_1[n] \rightarrow y_1[n], \quad x_2[n] \rightarrow y_2[n]
-$$
-则对任意常数$a, b$有：
-$$
-\mathcal{T}\{a x_1[n] + b x_2[n]\} = a\,y_1[n] + b\,y_2[n]
-$$
+>> 若$$x_1[n] \rightarrow y_1[n], \quad x_2[n] \rightarrow y_2[n]$$
+>>则对任意常数$a, b$有：
+$$\mathcal{T}\{a x_1[n] + b x_2[n]\} = a\,y_1[n] + b\,y_2[n]$$
 > 2. 时不变性: 系统特性不随时间变化
->> 则对任意常数$a, b$有：
-$$
-\mathcal{T}\{a x_1[n] + b x_2[n]\} = a\,y_1[n] + b\,y_2[n]
-$$
+>> 若$$x[n] \rightarrow y[n]$$
+>>则对任意整数时移$n_0$有：$$\mathcal{T}\{x[n - n_0]\} = y[n - n_0]$$
 
 下面我们讨论的系统都是**线性时不变系统**：
 
@@ -140,13 +133,11 @@ $$
 
 由正交性可知 
 $$
-y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k] = \sum_{k=-\infty}^{\infty} \sum_i \operatorname*{T}(x)[i][k]\,
-\sum_j \operatorname*{T}(h)[j][n-k] 
-=   \sum_i \sum_j\sum_{k=-\infty}^{\infty}
-\operatorname*{T}(x)[i][k]\,
-\operatorname*{T}(h)[i][n-k]
-=\sum_i  \sum_{k=-\infty}^{\infty}  \operatorname*{T}(x)[i][k]\,
-\operatorname*{T}(h)[i][n-k]
+\begin{aligned}
+y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k] &= \sum_{k=-\infty}^{\infty} \sum_i \operatorname*{T}(x)[i][k]\,\sum_j \operatorname*{T}(h)[j][n-k] \\
+&= \sum_i \sum_j\sum_{k=-\infty}^{\infty}\operatorname*{T}(x)[i][k]\,\operatorname*{T}(h)[i][n-k] \\
+&=\sum_i  \sum_{k=-\infty}^{\infty}  \operatorname*{T}(x)[i][k]\,\operatorname*{T}(h)[i][n-k]
+\end{aligned}
 $$
 
 又有
