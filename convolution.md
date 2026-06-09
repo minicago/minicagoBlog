@@ -132,7 +132,7 @@ $$
 > 两个信号a,b正交当且仅当其点集为0
 > $$a \cdot b = \sum_{k=-\infty}^\infty a[k] \cdot b[k]$$
 
-记 $\operatorname{T} (x)[i] $ 为$x$ 分解出的第 i 个正交信号，有
+记 $\operatorname{T} (x)[i]$ 为$x$ 分解出的第 i 个正交信号，有
 
 $$
     \sum_i \operatorname{T}(x)[i][k] = x[k]
