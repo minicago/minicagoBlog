@@ -17,26 +17,26 @@ difficulty: medium+
 > 一个离散时间系统，如果同时满足以下两个条件，就称为 LTI 系统:
 > 1. 线性性: 对加权和的响应等于各自响应的加权和 
 >> 若
-\[
+$$
 x_1[n] \rightarrow y_1[n], \quad x_2[n] \rightarrow y_2[n]
-\]
+$$
 则对任意常数 \( a, b \) 有：
-\[
+$$
 \mathcal{T}\{a x_1[n] + b x_2[n]\} = a\,y_1[n] + b\,y_2[n]
-\]
+$$
 > 2. 时不变性: 系统特性不随时间变化
 >> 则对任意常数 \( a, b \) 有：
-\[
+$$
 \mathcal{T}\{a x_1[n] + b x_2[n]\} = a\,y_1[n] + b\,y_2[n]
-\]
+$$
 
 下面我们讨论的系统都是**线性时不变系统**：
 
 对于两个离散时间信号 \( x[x] \) 和 \( h[x] \)，它们的**卷积和**（简称卷积）定义为：
 
-\[
+$$
 y[x] = x[x] * h[x] = \sum_{k=-\infty}^{\infty} x[k] \, h[x-k]
-\]
+$$
 
 其中：
 - \( x[x] \)：输入信号
@@ -52,9 +52,9 @@ y[x] = x[x] * h[x] = \sum_{k=-\infty}^{\infty} x[k] \, h[x-k]
 #### 1.脉冲响应: 用单位强度拍手听到的声音序列 \( h[n] \)
 在舞台上击掌一次（理想化单位脉冲），你录下的声音序列（直达声 + 两次墙壁回声）为：
 
-\[
+$$
 h[n] = \{ \underline{1},\; 0.6,\; 0.3 \}
-\]
+$$
 
 - \( n=0 \)：直达声，幅度最大（1）
 - \( n=1 \)：第一次回声，延迟1个时间单位，衰减到 0.6
@@ -67,23 +67,23 @@ h[n] = \{ \underline{1},\; 0.6,\; 0.3 \}
 - **第一下**：\( n=0 \) 时刻用力拍，幅度为 \( 2 \)
 - **第二下**：\( n=2 \) 时刻较轻拍，幅度为 \( 1 \)
 
-\[
+$$
 x[n] = \{ \underline{2},\; 0,\; 1 \}
-\]
+$$
 
 （\( n=1 \) 时不拍手，幅度为 0）
 
 #### 3. 输出信号：音乐厅在如此拍手情况下的声音序列 \( y[n] \)
 
-\[
+$$
 y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k]
-\]
+$$
 
 **最终输出序列**：
 
-\[
+$$
 y[n] = \{ \underline{2},\; 1.2,\; 1.6,\; 0.6,\; 0.3 \}
-\]
+$$
 
 ## 卷积的计算
 
@@ -93,28 +93,28 @@ y[n] = \{ \underline{2},\; 1.2,\; 1.6,\; 0.6,\; 0.3 \}
 
 ## 与多项式乘法的关联
 
-\[
+$$
 y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k]
-\]
+$$
 
 与多项式乘法的公式：
 
-\[
+$$
 f(x) = \sum_{i = -\infty}^\infty a_i \cdot x^i
-\]
+$$
 
-\[
+$$
 g(x) = \sum_{i = -\infty}^\infty b_i \cdot x^i
-\]
+$$
 
-\[
+$$
 f(x) \cdot g(x) = \sum_{i = -\infty}^\infty c_i \cdot x^i
-\]
+$$
 
-其中 
-\[
+其中
+$$
 c_n = \sum_{i = -\infty}^\infty a_k \cdot b_{n-k} 
-\]
+$$
 
 这个求解 $c_n$ 的式子和卷积计算的式子的运算过程完全相同，说明其求解可以相互转化。
 
@@ -123,9 +123,9 @@ c_n = \sum_{i = -\infty}^\infty a_k \cdot b_{n-k}
 我们需要用到一个**变换**的工具
 
 考虑到计算 
-\[
+$$
 y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k]
-\]
+$$
 
 复杂度很高，我们可以考虑将其拆分成若干个**正交**的信号序列的和。
 
@@ -134,18 +134,18 @@ y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k]
 
 记 $\operatorname{T} (x)[i] $ 为$x$ 分解出的第 i 个正交信号，有
 
-\[
+$$
     \sum_i \operatorname{T}(x)[i][k] = x[k]
-\]
+$$
 
 由正交性可知 
 $$
 y[n] = \sum_{k=-\infty}^{\infty} x[k]\,h[n-k] = \sum_{k=-\infty}^{\infty} \sum_i \operatorname*{T}(x)[i][k]\,
 \sum_j \operatorname*{T}(h)[j][n-k] 
-\\=   \sum_i \sum_j\sum_{k=-\infty}^{\infty}
+=   \sum_i \sum_j\sum_{k=-\infty}^{\infty}
 \operatorname*{T}(x)[i][k]\,
 \operatorname*{T}(h)[i][n-k]
-\\=\sum_i  \sum_{k=-\infty}^{\infty}  \operatorname*{T}(x)[i][k]\,
+=\sum_i  \sum_{k=-\infty}^{\infty}  \operatorname*{T}(x)[i][k]\,
 \operatorname*{T}(h)[i][n-k]
 $$
 
@@ -190,28 +190,28 @@ $$
 
 也就是说 $e^{ix}$ 是将$1$在复平面上逆时针旋转 $x Rad$
 
-我们考虑两个函数： $e^{i\omega_1x}$ 与 $e^{i\omega_2x}$ 的卷积，其中 $\frac{\omega_1\,N}{2 \pi},\frac{\omega_2\,N}{2 \pi} \in \Z$
+我们考虑两个函数： $e^{i\omega_1x}$ 与 $e^{i\omega_2x}$ 的卷积，其中 $\frac{\omega_1\,N}{2 \pi},\frac{\omega_2\,N}{2 \pi} \in \mathbb{Z}$
 
->因为 $\sum_{k=-\infty}^{\infty} $ 这种形式会涉及到无穷，不方便后续推导，我们保证$\frac{\omega_1\,N}{2 \pi},\frac{\omega_2\,N}{2 \pi} \in \Z$的情况下，求和会每$N$个数字循环，所以仅需要考虑$\sum_{k=0}^{N-1} $ 
+>因为 $\sum_{k=-\infty}^{\infty} $ 这种形式会涉及到无穷，不方便后续推导，我们保证$\frac{\omega_1\,N}{2 \pi},\frac{\omega_2\,N}{2 \pi} \in \mathbb{Z}$的情况下，求和会每$N$个数字循环，所以仅需要考虑$\sum_{k=0}^{N-1} $ 
 
-$$(e^{i\omega_1x}* e^{i\omega_2x})(x) = \sum_{k = 0}^{N-1}e^{i\omega_1k}* e^{i\omega_2(x-k)} \\= \sum_{k = 0}^{N-1} e^{i((\omega_1-\omega_2)k + \omega_2x)} $$
+$$(e^{i\omega_1x}* e^{i\omega_2x})(x) = \sum_{k = 0}^{N-1}e^{i\omega_1k}* e^{i\omega_2(x-k)} = \sum_{k = 0}^{N-1} e^{i((\omega_1-\omega_2)k + \omega_2x)} $$
 
-当 $\omega_1 \ne \omega_2$ 时 ,$(\omega_1 - \omega_2)N \in \Z /\{0\}$ 
+当 $\omega_1 \ne \omega_2$ 时 ,$(\omega_1 - \omega_2)N \in \mathbb{Z} \setminus \{0\}$ 
 容易证明此时 $$\sum_{k=0}^{N-1}e^{i((\omega_1-\omega_2)k + \omega_2x)} = 0 $$ 即证得正交性
 
 当 $\omega_1 = \omega_2 = \omega$ 时，$\omega_1 - \omega_2 = 0$
 
-$$(e^{i\omega_1x}* e^{i\omega_2x})(x) = \sum_{k = 0}^{N-1}e^{i((\omega_1-\omega_2)k + \omega_2x)} \\ = N \cdot e^{i\omega x} $$
+$$(e^{i\omega_1x}* e^{i\omega_2x})(x) = \sum_{k = 0}^{N-1}e^{i((\omega_1-\omega_2)k + \omega_2x)}  = N \cdot e^{i\omega x} $$
 
 我们发现不仅卷积的结果已知，而且计算出的结果直接属于这一类信号，方便我们后续计算。
 
 现在考虑长度为 $N$ 的信号序列 $x[n]$，其只在 $n \in [0,N) \cap \mathbb{N}$ 有值。我们列出 $N$ 个常用的复指数基序列：
 
-\[
+$$
 h_k[n] = \frac{1}{N} e^{i\frac{2\pi n k}{N}}, \quad k \in [0,N) \cap \mathbb{N},
-\]
+$$
 写成矩阵形式，即
-\[
+$$
 \mathbf{U} = \frac{1}{N}
 \begin{bmatrix}
 1 & 1 & 1 & \cdots & 1 \\
@@ -220,7 +220,7 @@ h_k[n] = \frac{1}{N} e^{i\frac{2\pi n k}{N}}, \quad k \in [0,N) \cap \mathbb{N},
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 1 & e^{i\frac{2\pi (N-1)}{N}} & e^{i\frac{4\pi (N-1)}{N}} & \cdots & e^{i\frac{2\pi (N-1)^2}{N}}
 \end{bmatrix},
-\]
+$$
 
 其中 \(\mathbf{U}_{n,k} = \frac{1}{N} e^{i\frac{2\pi n k}{N}}\)，\(n,k = 0,1,\dots,N-1\)。
 
@@ -230,19 +230,19 @@ h_k[n] = \frac{1}{N} e^{i\frac{2\pi n k}{N}}, \quad k \in [0,N) \cap \mathbb{N},
 
 然后我们考虑进行分解：
 
-\[
+$$
 x[n] = \sum_{k=0}^{N-1} b_k \, h_k[n].
-\]
+$$
 
 将分解式写成矩阵形式：
 
-\[
+$$
 \mathbf{x} = \mathbf{U} \, \mathbf{b},
-\]
+$$
 
 其中：
 
-\[
+$$
 \mathbf{x} = \begin{bmatrix} x[0] \\ x[1] \\ \vdots \\ x[N-1] \end{bmatrix}, \qquad
 \mathbf{b} = \begin{bmatrix} b_0 \\ b_1 \\ \vdots \\ b_{N-1} \end{bmatrix}, \qquad
 \mathbf{U} = \begin{bmatrix}
@@ -251,35 +251,35 @@ h_0[1] & h_1[1] & \cdots & h_{N-1}[1] \\
 \vdots & \vdots & \ddots & \vdots \\
 h_0[N-1] & h_1[N-1] & \cdots & h_{N-1}[N-1]
 \end{bmatrix}.
-\]
+$$
 
 因此矩阵 $\mathbf{U}$ 的元素为：
 
-\[
+$$
 \mathbf{U}_{n,k} = \frac{1}{N} e^{i\frac{2\pi n k}{N}}.
-\]
+$$
 
 我们需要求得 $\mathbf{b}$，可以通过求解线性方程组得到：
 
-\[
+$$
 \mathbf{b} = \mathbf{U}^{-1} \mathbf{x}.
-\]
+$$
 
 由于 $\mathbf{U}$ 的列**不是**标准正交的（其列范数为 $1/\sqrt{N}$），$\mathbf{U}$ 不是酉矩阵。但我们可以直接计算其逆矩阵：注意到
 
-\[
+$$
 \sum_{m=0}^{N-1} e^{-i\frac{2\pi m k}{N}} \cdot \frac{1}{N} e^{i\frac{2\pi m n}{N}} = \frac{1}{N} \sum_{m=0}^{N-1} e^{i\frac{2\pi m (n-k)}{N}} = \delta_{k,n},
-\]
+$$
 
 因此逆矩阵的元素为：
 
-\[
+$$
 \left(\mathbf{U}^{-1}\right)_{k,n} = e^{-i\frac{2\pi n k}{N}}, \quad k,n = 0,1,\dots,N-1.
-\]
+$$
 
 即
 
-\[
+$$
 \mathbf{U}^{-1} =
 \begin{bmatrix}
 e^{-i\frac{2\pi\cdot0\cdot0}{N}} & e^{-i\frac{2\pi\cdot0\cdot1}{N}} & \cdots & e^{-i\frac{2\pi\cdot0\cdot(N-1)}{N}} \\
@@ -287,7 +287,7 @@ e^{-i\frac{2\pi\cdot1\cdot0}{N}} & e^{-i\frac{2\pi\cdot1\cdot1}{N}} & \cdots & e
 \vdots & \vdots & \ddots & \vdots \\
 e^{-i\frac{2\pi\cdot(N-1)\cdot0}{N}} & e^{-i\frac{2\pi\cdot(N-1)\cdot1}{N}} & \cdots & e^{-i\frac{2\pi\cdot(N-1)\cdot(N-1)}{N}}
 \end{bmatrix}.
-\]
+$$
 
 注意，$\mathbf{U}^{-1}$ 不再是 $\mathbf{U}$ 的共轭转置，而是其共轭转置的 $N$ 倍，即 $\mathbf{U}^{-1} = N \, \mathbf{U}^*$。这与离散傅里叶变换中正逆变换相差一个因子 $1/N$ 的惯例完全一致：若定义 $\mathbf{b}$ 为频域系数，则 $\mathbf{b} = \mathbf{U}^{-1} \mathbf{x}$ 正是 DFT 的正变换公式（无缩放），而 $\mathbf{x} = \mathbf{U} \mathbf{b}$ 是逆变换公式（含 $1/N$ 缩放）。
 
@@ -301,9 +301,9 @@ e^{-i\frac{2\pi\cdot(N-1)\cdot0}{N}} & e^{-i\frac{2\pi\cdot(N-1)\cdot1}{N}} & \c
 
 由上文矩阵可知离散傅里叶变换定义为：
 
-\[
+$$
 X[k] = \sum_{n=0}^{N-1} x[n] \, \omega_N^{-nk}, \quad k = 0,1,\dots,N-1,
-\]
+$$
 
 其中 $\omega_N = e^{i\frac{2\pi}{N}}$ 是 $N$ 次单位根。为简洁，以下记 $\omega = \omega_N$，并假设 $N$ 是 2 的幂（方便后续分治，实际应用中N可以取到大于需要范围的最小的 2 的幂）。
 
@@ -324,27 +324,27 @@ X[k] = \sum_{n=0}^{N-1} x[n] \, \omega_N^{-nk}, \quad k = 0,1,\dots,N-1,
 
 则原序列的 DFT $X[k]$ 可表示为：
 
-\[
+$$
 \begin{aligned}
 X[k] &= \sum_{m=0}^{N/2-1} x[2m] \, \omega^{-2mk} \;+\; \sum_{m=0}^{N/2-1} x[2m+1] \, \omega^{-(2m+1)k} \\
 &= \sum_{m=0}^{N/2-1} x_e[m] \, (\omega^2)^{-mk} \;+\; \omega^{-k} \sum_{m=0}^{N/2-1} x_o[m] \, (\omega^2)^{-mk}.
 \end{aligned}
-\]
+$$
 
 注意到 $\omega^2 = e^{i\frac{4\pi}{N}} = e^{i\frac{2\pi}{N/2}} = \omega_{N/2}$，因此上式是两个长度为 $N/2$ 的 DFT：
 
-\[
+$$
 X[k] = X_e[k] + \omega^{-k} X_o[k], \quad k = 0,\dots,N-1,
-\]
+$$
 
 其中 $X_e[k]$ 和 $X_o[k]$ 分别是 $x_e$ 和 $x_o$ 的 $N/2$ 点 DFT（周期为 $N/2$）。由于 $X_e[k]$ 和 $X_o[k]$ 以 $N/2$ 为周期，只需计算 $k=0,\dots,N/2-1$，然后利用周期性得到 $k=N/2,\dots,N-1$ 的值：
 
-\[
+$$
 \begin{cases}
-X[k] = X_e[k] + \omega^{-k} X_o[k], & k = 0,\dots,N/2-1, \\[4pt]
+X[k] = X_e[k] + \omega^{-k} X_o[k], & k = 0,\dots,N/2-1, \\
 X[k+N/2] = X_e[k] + \omega^{-(k+N/2)} X_o[k] = X_e[k] - \omega^{-k} X_o[k], & k = 0,\dots,N/2-1.
 \end{cases}
-\]
+$$
 
 其中用到了对称性 $\omega^{-(k+N/2)} = -\omega^{-k}$。
 
@@ -367,12 +367,12 @@ X[k+N/2] = X_e[k] + \omega^{-(k+N/2)} X_o[k] = X_e[k] - \omega^{-k} X_o[k], & k 
 
 上述递归算法中，最内层的两个计算：
 
-\[
+$$
 \begin{aligned}
 X[k] &= X_e[k] + W \cdot X_o[k] \\
 X[k+N/2] &= X_e[k] - W \cdot X_o[k]
 \end{aligned}
-\]
+$$
 
 称为 **蝶形运算**，其结构图如下（$W = \omega^{-k}$）：
 ```plain_text
@@ -464,20 +464,20 @@ void fft(vector<cd>& a, int inv) {
 
 **阶 (Order)**
 设 $p$ 为素数，$g$ 是模 $p$ 的一个**原根**（primitive root），如果 $g$ 的阶为 $p-1$，即：
-\[
+$$
 g^{p-1} \equiv 1 \pmod p, \quad \text{且对于任意 } 1 \le t < p-1,\ g^t \not\equiv 1 \pmod p.
-\]
+$$
 换句话说，$\{g^0, g^1, \dots, g^{p-2}\}$ 恰好遍历模 $p$ 的非零剩余。
 
 **用原根构造“单位根”**
 在 NTT 中，我们选取一个素数 $p$，使得 $p-1$ 是 $N$ 的倍数（通常 $N$ 为 2 的幂）。令
-\[
+$$
 \omega_N \equiv g^{\frac{p-1}{N}} \pmod p.
-\]
+$$
 那么 $\omega_N$ 在模 $p$ 下的阶恰好是 $N$，因为：
-\[
+$$
 \omega_N^N \equiv g^{p-1} \equiv 1 \pmod p, \quad \text{且 } \omega_N^{N/2} \neq 1 \ (\text{当 } N>2).
-\]
+$$
 
 于是 $\omega_N$ 具有与复数单位根完全相同的代数性质：
 
